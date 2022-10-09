@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarefa{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Tarefa</h1>
+    <a href="{{ path('app_tarefa_index') }}">
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Voltar') }}</button>
+    </a>
+
+    <a href="{{ path('app_tarefa_edit', {'id': tarefa.id}) }}">
+            <button class="btn {{ button_color|default('btn-outline-warning') }}  mt-3">{{ button_label|default('Editar') }}</button>
+    </a>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tarefa.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ tarefa.titulo }}</td>
+            </tr>
+            {{ include('tarefa/_delete_form.html.twig') }}
+        </tbody>
+
+    </table>
+    
+</div>
+{% endblock %}

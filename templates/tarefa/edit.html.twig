@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tarefa{% endblock %}
+
+{% block body %}
+<div class="container">
+        <h2 class="text-center mt-5 mb-3">Edit Project</h2>
+        <div class="card">
+            <div class="card-body">
+                {% include 'tarefa/_form.html.twig' with {'button_label': 'Update Project', 'button_color': 'btn-outline-success'}  %}
+            </div>
+        </div>
+        <a href="{{ path('app_tarefa_index') }}">
+                <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Voltar') }}</button>
+</a>
+    </div>
+{% endblock %}

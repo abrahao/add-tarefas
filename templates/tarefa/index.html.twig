@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarefa index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Lista de Tarefas</h1>
+    <a href="{{ path('app_tarefa_new') }}">
+        <button class="btn {{ button_color|default('btn-outline-success') }}  mt-3">{{ button_label|default('Nova Tarefa') }}</button>
+    </a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarefa in tarefas %}
+            <tr>
+                <td>{{ tarefa.id }}</td>
+                <td>{{ tarefa.titulo }}</td>
+                <td>
+                    <a href="{{ path('app_tarefa_show', {'id': tarefa.id}) }}">
+                        <button class="btn {{ button_color|default('btn-outline-info') }}  mt-3">{{ button_label|default('Exibir') }}</button>
+                    </a>
+                    <a href="{{ path('app_tarefa_edit', {'id': tarefa.id}) }}">
+                            <button class="btn {{ button_color|default('btn-outline-warning') }}  mt-3">{{ button_label|default('Editar') }}</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Nenhuma tarefa encontrada</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
